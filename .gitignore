@@ -1,0 +1,5 @@
+# Node modules (ignore Node.js dependencies)
+node_modules/
+
+# Environment variables file (important for security)
+.env
