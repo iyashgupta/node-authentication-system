@@ -5,9 +5,8 @@ require('dotenv').config()
 const connectionToDb = () => {
   return mongoose
   // .connect("mongodb://localhost:27017/loginAuthentication", {
-    .connect(process.env.MONGO_CONNECTION_URL, {
-      useNewUrlParser: true, 
-      useUnifiedTopology: true,
+    .connect(process.env.MONGO_CONNECTION_URL,{
+      serverSelectionTimeoutMS: 20000, // Increase the timeout to 20 seconds
     })
     .then(() => {
       console.log("Database connection established successfully.");
