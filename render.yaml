@@ -8,7 +8,3 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: MONGO_CONNECTION_URL
-        fromDatabase:
-          name: mongodb-cluster
-          property: connectionString
