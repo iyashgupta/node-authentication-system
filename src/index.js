@@ -5,9 +5,17 @@ const app = express()
 const UserAuthMiddleware = require('./components/MiddleWare/UserAuthToken.Middleware')
 const DashboardRoute = require('./components/Routes/dashboard/dashboardRoute')
 const connectionToDb = require('../db')
+const cors = require('cors');
 
 app.use(express.json())
-    
+
+const allowedOrigin =[
+    'http://localhost:3000', // For local development
+  ]
+app.use(cors({
+    origin: allowedOrigin,
+    methods: 'GET,POST,PUT,DELETE', // Allowed methods
+  }));
 
 app.use('/', AuthRoute)
 
