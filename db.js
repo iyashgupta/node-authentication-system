@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
+require('dotenv').config()
+
 
 const connectionToDb = () => {
   return mongoose
-    .connect("mongodb://localhost:27017/loginAuthentication", {
+  // .connect("mongodb://localhost:27017/loginAuthentication", {
+    .connect(process.env.MONGO_CONNECTION_URL, {
       useNewUrlParser: true, 
       useUnifiedTopology: true,
     })
