@@ -11,6 +11,7 @@ app.use(express.json())
 
 const allowedOrigin =[
     'http://localhost:3000', // For local development
+    'https://userlist-phi.vercel.app'  // For production Deployment 
   ]
 app.use(cors({
     origin: allowedOrigin,
