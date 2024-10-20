@@ -21,15 +21,14 @@ AuthRouter.post("/auth/login",async (req, res) => {
      if(!isEmailExist){
         return res
         .status(401)
-        .send({ message: "Email Didn't Exist", status: false });
+        .send({ message: "Invalid Credential", status: false });
      }
 
 
      // Compare the provided password with the hashed password in the database
      const isPasswordMatched = await bcrypt.compare(password, isEmailExist.password);
      if (isPasswordMatched) {
-       
-       var token = jwt.sign({ email:isEmailExist.email }, process.env.JWT_SECRET);
+       var token = jwt.sign({ userId:isEmailExist._id }, process.env.JWT_SECRET);
        return res.status(200).send({
          message: "Login successful",
          status: true,

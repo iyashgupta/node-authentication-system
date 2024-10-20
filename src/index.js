@@ -22,7 +22,6 @@ app.use('/', AuthRoute)
 
 app.use(UserAuthMiddleware)
 
-
 app.use('/dashboard', DashboardRoute)
 
 const PORT = process.env.PORT 

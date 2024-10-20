@@ -8,7 +8,7 @@ const UserAuthMiddleware = (req, res, next) => {
     return res.status(401).send({ message: "Unauthorized: No token provided", status: false });
   }
 
-  // Token is usually in the format "Bearer <token>", so split it by space
+  // Token format "Bearer <token>", so split it by space
   const token = authHeader.split(" ")[1]; // Extract the token
 
   // Check if the token is present
@@ -21,10 +21,7 @@ const UserAuthMiddleware = (req, res, next) => {
     if (err) {
       return res.status(401).send({ message: "Invalid Token", status: false });
     }
-
-    console.log("Decoded token:", decoded)
     req.body = decoded;
-
     // Proceed to the next middleware or route handler
     next();
   });
