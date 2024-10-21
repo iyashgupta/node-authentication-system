@@ -47,9 +47,9 @@ AuthRouter.post("/auth/login",async (req, res) => {
 // signUp Api
 AuthRouter.post("/auth/signUp", async (req, res) => {
   try {
-    const { name, mobileNumber, password, email } = req.body;
+    const { name, userName, password, email } = req.body;
 
-    if (!name || !mobileNumber || !password || !email) {
+    if (!name || !userName || !password || !email) {
       return res
         .status(400)
         .send({ message: "All Field Must Be Filled", status: false });
@@ -63,11 +63,11 @@ AuthRouter.post("/auth/signUp", async (req, res) => {
         .send({ message: "Email ALready Exist", status: false });
     }
 
-    const existingMobileNumberExist = await UserModel.findOne({ mobileNumber });
-    if (existingMobileNumberExist) {
+    const existingUserNameExist = await UserModel.findOne({ userName });
+    if (existingUserNameExist) {
       return res
         .status(400)
-        .send({ message: "Mobile Number already exists", status: false });
+        .send({ message: "User Name already exists", status: false });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

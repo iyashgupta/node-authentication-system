@@ -5,6 +5,7 @@ const app = express()
 const UserAuthMiddleware = require('./components/MiddleWare/UserAuthToken.Middleware')
 const DashboardRoute = require('./components/Routes/dashboard/dashboardRoute')
 const connectionToDb = require('../db')
+const {BlogRouter} =require('./components/Routes/BlogRoute/BlogRoute')
 const cors = require('cors');
 
 app.use(express.json())
@@ -23,6 +24,7 @@ app.use('/', AuthRoute)
 app.use(UserAuthMiddleware)
 
 app.use('/dashboard', DashboardRoute)
+app.use('/blog', BlogRouter)
 
 const PORT = process.env.PORT 
 app.listen(PORT , async ()=> {

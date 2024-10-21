@@ -21,7 +21,7 @@ const UserAuthMiddleware = (req, res, next) => {
     if (err) {
       return res.status(401).send({ message: "Invalid Token", status: false });
     }
-    req.body = decoded;
+    req.body.userId = decoded.userId;
     // Proceed to the next middleware or route handler
     next();
   });
